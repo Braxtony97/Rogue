@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 667934693}
   - component: {fileID: 667934692}
   - component: {fileID: 667934694}
+  - component: {fileID: 667934695}
   m_Layer: 5
   m_Name: Headers
   m_TagString: Untagged
@@ -501,7 +502,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 1020, y: 79}
+  m_SizeDelta: {x: 0, y: 79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &667934692
 MonoBehaviour:
@@ -558,15 +559,29 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
+  m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &667934695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667934690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &726682495
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header (1)
+      value: Encycplopedia_Header
       objectReference: {fileID: 0}
     - target: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Pivot.x
@@ -1022,11 +1037,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5121653833038496658, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header (2)
+      value: Character_Header
       objectReference: {fileID: 0}
     - target: {fileID: 6597452403284650886, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_IsActive
@@ -1144,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header (5)
+      value: Map_Header
       objectReference: {fileID: 0}
     - target: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Pivot.x
@@ -1250,7 +1265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header (3)
+      value: Factions_Header
       objectReference: {fileID: 0}
     - target: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Pivot.x
@@ -1356,7 +1371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header (4)
+      value: Journal_Header
       objectReference: {fileID: 0}
     - target: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Pivot.x
@@ -1458,7 +1473,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5616412945474046228, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
-      value: Header
+      value: Inventory_Header
       objectReference: {fileID: 0}
     - target: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Pivot.x
