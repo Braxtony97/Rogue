@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2528273075351975781, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_Name
-      value: Psyker_modification_root Variant
+      value: modification_root Variant_DOT
       objectReference: {fileID: 0}
     - target: {fileID: 4816896604948027490, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_Name

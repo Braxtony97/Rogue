@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_SizeDelta.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1939624971870589400, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -88,9 +88,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356488194050061466, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_text
+      value: DEBUFF
+      objectReference: {fileID: 0}
     - target: {fileID: 2528273075351975781, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_Name
-      value: modification_root
+      value: modification_root Variant_Debuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816896604948027490, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Name
+      value: Debugg_Modification
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467454848390545165, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 618541f72a654344b905e51b208331b0, type: 3}
+    - target: {fileID: 7943862385044666238, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3dd9fd3512f318d4e89799ae6ce61336, type: 3}
+    - target: {fileID: 7943862385044666238, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943862385044666238, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Color.g
+      value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943862385044666238, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_Color.r
+      value: 0.45490196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
