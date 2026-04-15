@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Enums;
 
 [CreateAssetMenu(fileName = "NewAbility", menuName = "Data/Ability")]
 public class AbilityData : ScriptableObject
