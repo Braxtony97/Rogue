@@ -9,6 +9,6 @@ public class CharacterData : ScriptableObject
     public Sprite FullPortrait;
     public int MaxHealth;
     public int MaxArmor;
-    public List<AbilityData> abilities;
-    public List<ModifierData> modifiers;
+    public List<AbilityData> Abilities;
+    public List<ModifierData> Modifiers;
 }

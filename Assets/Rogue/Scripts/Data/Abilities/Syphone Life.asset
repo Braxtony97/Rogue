@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56efa118404fe154a88487a253183cee, type: 3}
-  m_Name: NewAbility
+  m_Name: Syphone Life
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
-  Name: 
-  Icon: {fileID: 0}
+  Name: Syphone Life
+  Icon: {fileID: 21300000, guid: 3cb7ab6bac6ded148877c15e0ab06daa, type: 3}
   AbilityType: 0
   CompatibleModifiers: 
