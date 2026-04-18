@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static EventsProvider;
 
@@ -7,11 +8,16 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private ScreenUI[] _screens;
     [SerializeField] private Transform canvas;
+    [SerializeField] private UIPanelController _uiPanelController;
 
     private ScreenUI _currentScreen;
+    private List<CharacterViewModel> _characterViewModels;
 
-    public void Initialize()
+    public void Initialize(List<CharacterViewModel> characterViewModels)
     {
+        _characterViewModels = characterViewModels;
+        _uiPanelController.Initialize(_characterViewModels);
+
         Subscribe();
     }
 
@@ -41,7 +47,7 @@ public class UIManager : MonoBehaviour
                 newScreen.transform.SetParent(canvas, false);
 
                 _currentScreen = newScreen;
-                _currentScreen.Initialize();
+                _currentScreen.Initialize(_characterViewModels, _uiPanelController);
             }
         }
     }

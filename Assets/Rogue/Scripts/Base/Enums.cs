@@ -1,8 +1,9 @@
 public static class Enums
 {
-    public enum CharacterNameId
+    public enum CharacterName
     {
-        SisterArgenta
+        SisterArgenta,
+        CrimeLord
     }
 
     public enum AbilityType
@@ -11,6 +12,12 @@ public static class Enums
         Despair,
         Assail,
         GetBackInFight
+    }
+
+    public enum ModifierName
+    {
+        Syphon,
+        Buff
     }
 
     public enum ModifierType
@@ -23,5 +30,11 @@ public static class Enums
     {
         MainMenu,
         NewGame
+    }
+
+    public enum PanelType
+    {
+        Inventory,
+        Character
     }
 }

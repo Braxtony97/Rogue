@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class MainMenuScreen : ScreenUI
     [SerializeField] private Button _settings;
     [SerializeField] private Button _exit;
 
-    public override void Initialize()
+    public override void Initialize(List<CharacterViewModel> characterViewModels, UIPanelController uiPanelController)
     {
         _newGame.onClick.AddListener(() => EventAggregator.Instance.Publish(new EventsProvider.OpenScreenEvent(Enums.ScreenType.NewGame)));
 
