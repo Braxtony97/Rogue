@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterViewModel
@@ -14,6 +15,7 @@ public class CharacterViewModel
     public string CurrentArmorText => $"{_model.CurrentArmor}";
     public string MaxHealthText => $"{_model.MaxHealth}";
     public string MaxArmorText => $"{_model.MaxArmor}";
+    public List<AbilityData> Abilities => _model.Abilities;
 
     private readonly CharacterModel _model;
 
@@ -36,7 +38,7 @@ public class CharacterViewModel
     private void OnArmorChanged(int armor) => 
         OnArmorTextChanged?.Invoke(CurrentArmorText);
 
-    public void SelectHero() => 
+    public void SelectCharacter() => 
         EventAggregator.Instance.Publish(new EventsProvider.CharacterSelectedEvent(_model.CharacterNameId));
 
     public void Unsubscribe()

@@ -18,5 +18,7 @@ MonoBehaviour:
   FullPortrait: {fileID: 21300000, guid: fe65eed3b3ac7f24e8448dcd3b2ed172, type: 3}
   MaxHealth: 160
   MaxArmor: 180
-  Abilities: []
+  Abilities:
+  - {fileID: 11400000, guid: b56158974ca4a604291831592ca967c3, type: 2}
+  - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
   Modifiers: []

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     private ScreenUI _currentScreen;
     private List<CharacterViewModel> _characterViewModels;
+    private Dictionary<Enums.ScreenType, ScreenUI> _instantiatedScreens = new Dictionary<Enums.ScreenType, ScreenUI>();
 
     public void Initialize(List<CharacterViewModel> characterViewModels)
     {
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
         Subscribe();
     }
 
-    private void Subscribe()
+    private void Subscribe() 
     {
         EventAggregator.Instance.Subscribe<OpenScreenEvent>(ScreenOpen);
     }
@@ -34,8 +35,14 @@ public class UIManager : MonoBehaviour
     {
         if (_currentScreen != null)
         {
-            _currentScreen.Deinitialize();
-            Destroy(_currentScreen.gameObject);
+            _currentScreen.gameObject.SetActive(false);
+        }
+
+        if (_instantiatedScreens.TryGetValue(screenType, out ScreenUI existingScreen))
+        {
+            existingScreen.gameObject.SetActive(true);
+            _currentScreen = existingScreen;
+            return;
         }
 
         foreach (var screen in _screens)
@@ -43,11 +50,12 @@ public class UIManager : MonoBehaviour
             if (screen.ScreenType == screenType)
             {
                 ScreenUI newScreen = Instantiate(screen);
-
                 newScreen.transform.SetParent(canvas, false);
+                newScreen.Initialize(_characterViewModels, _uiPanelController);
 
+                _instantiatedScreens[screenType] = newScreen;
                 _currentScreen = newScreen;
-                _currentScreen.Initialize(_characterViewModels, _uiPanelController);
+                break;
             }
         }
     }

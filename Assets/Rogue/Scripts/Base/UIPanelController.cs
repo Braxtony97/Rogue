@@ -58,6 +58,6 @@ public class UIPanelController : MonoBehaviour
         _currentPanel = null;
     }
 
-    private void OnDestroy() => 
+    private void OnDestroy() =>
         ClearPanels();
 }

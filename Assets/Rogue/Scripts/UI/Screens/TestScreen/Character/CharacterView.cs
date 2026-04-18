@@ -17,7 +17,7 @@ public class CharacterView : MonoBehaviour
 
         UpdateView();
 
-        _selectButton.onClick.AddListener(() => _viewModel.SelectHero());
+        _selectButton.onClick.AddListener(() => _viewModel.SelectCharacter());
         EventAggregator.Instance.Subscribe<CharacterSelectedEvent>(CharacterSelect);
     }
 

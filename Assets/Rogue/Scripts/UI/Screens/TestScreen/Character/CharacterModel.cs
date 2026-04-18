@@ -33,7 +33,8 @@ public class CharacterModel
     public int MaxHealth => _data.MaxHealth;
     public int MaxArmor => _data.MaxArmor;
 
-    public readonly List<AbilityData> Abilities;
+    public List<AbilityData> Abilities => _data.Abilities;
+
     public readonly List<ModifierData> Modifiers;
 
     private int _currentHealth;

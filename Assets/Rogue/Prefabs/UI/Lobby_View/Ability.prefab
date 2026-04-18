@@ -221,8 +221,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5451776189168957744}
+  - component: {fileID: 5787503230469748974}
   m_Layer: 5
-  m_Name: Abilitie
+  m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +252,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5787503230469748974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644741973539949219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25bab7feda9423e4b90d63b624306827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityView
+  _icon: {fileID: 7095388694899022245}
+  _nameText: {fileID: 5979765918764004512}
 --- !u!1 &2478707453338678966
 GameObject:
   m_ObjectHideFlags: 0
