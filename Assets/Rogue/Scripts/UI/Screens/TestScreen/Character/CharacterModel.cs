@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CharacterModel
 {
@@ -26,12 +27,12 @@ public class CharacterModel
 
     public event Action<int> OnHealthChanged;
     public event Action<int> OnArmorChanged;
-    public string Name => _data.Name;
-    public Enums.CharacterName CharacterNameId => _data.CharacterNameId;
-    public Sprite Avatar => _data.Avatar;
-    public Sprite FullPortrait => _data.FullPortrait;
-    public int MaxHealth => _data.MaxHealth;
-    public int MaxArmor => _data.MaxArmor;
+    public string Name => _characterData.Name;
+    public Enums.CharacterName CharacterNameId => _characterData.CharacterNameId;
+    public Sprite Avatar => _characterData.Avatar;
+    public Sprite FullPortrait => _characterData.FullPortrait;
+    public int MaxHealth => _characterData.MaxHealth;
+    public int MaxArmor => _characterData.MaxArmor;
 
     public List<AbilityModel> Abilities { get; private set; }
 
@@ -39,13 +40,15 @@ public class CharacterModel
 
     private int _currentHealth;
     private int _currentArmor;
-    private readonly CharacterData _data;
+    private readonly CharacterData _characterData;
+    private readonly GameData _gameData;
 
-    public CharacterModel(CharacterData data)
+    public CharacterModel(CharacterData characterData, GameData data)
     {
-        _data = data;
-        _currentHealth = _data.MaxHealth;
-        _currentArmor = _data.MaxArmor;
+        _characterData = characterData;
+        _gameData = data;
+        _currentHealth = _characterData.MaxHealth;
+        _currentArmor = _characterData.MaxArmor;
 
         InitializeAbilities();
         InitializeModifiers();
@@ -55,9 +58,9 @@ public class CharacterModel
     {
         Modifiers = new List<ModifierModel>();
 
-        foreach (ModifierData modifierData in _data.Modifiers)
+        foreach (ModifierData modifierData in _characterData.Modifiers)
         {
-            ModifierModel modifierModel = new ModifierModel(modifierData);
+            ModifierModel modifierModel = new ModifierModel(modifierData, _gameData);
             Modifiers.Add(modifierModel);
         }
     }
@@ -66,7 +69,7 @@ public class CharacterModel
     {
         Abilities = new List<AbilityModel>();
 
-        foreach (AbilityData abilityData in _data.Abilities)
+        foreach (AbilityData abilityData in _characterData.Abilities)
         {
             AbilityModel abilityModel = new AbilityModel(abilityData);
             Abilities.Add(abilityModel);

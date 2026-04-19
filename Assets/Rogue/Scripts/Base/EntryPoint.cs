@@ -18,7 +18,7 @@ public class EntryPoint : MonoBehaviour
     {
         foreach (var characterData in _data.Characters)
         {
-            var model = new CharacterModel(characterData);
+            var model = new CharacterModel(characterData, _data);
             var viewModel = new CharacterViewModel(model);
             _characterViewModels.Add(viewModel);
         }

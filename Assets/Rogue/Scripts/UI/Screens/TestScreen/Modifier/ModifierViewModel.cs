@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class ModifierViewModel
 {
-    public bool IsDragging => _isDragging;
-    public string Name => _model.Name;
-    public Sprite Icon => _model.Icon;
-    public bool IsAttached => _model.IsAttached;
-    public Enums.ModifierType ModifierType => _model.ModifierType;
-
     public event Action<bool> OnHighlihtChanged;
     public event Action<bool> OnDragStateChanged;
-    public bool IsCompatibleHighlight => _isCompatibleHighlight;
+
+    public ModifierModel GetModel() => _model;
+    public string Name => _model.Name;
+    public Sprite IconLogo => _model.IconLogo;
+    public Color IconBackColor => _model.IconBackColor;
+    public bool IsAttached => _model.IsAttached;
+    public Enums.ModifierType ModifierType => _model.ModifierType;
 
     private readonly ModifierModel _model;
     private bool _isHighlighted;
@@ -41,15 +41,6 @@ public class ModifierViewModel
 
         abilityVM.AttachModifier(this);
     }
-
-    public void SetHighlight(bool highlight)
-    {
-        _isHighlighted = highlight;
-        //OnHighlihtChanged?.Invoke(highlight); 
-    }
-
-    public bool IsHighlighted => _isHighlighted;
-    public ModifierModel GetModel() => _model;
 
     public void SetCompatibleHighlight(bool isCompatible)
     {

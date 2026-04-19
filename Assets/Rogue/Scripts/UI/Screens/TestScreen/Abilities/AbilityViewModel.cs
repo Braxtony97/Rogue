@@ -6,7 +6,6 @@ public class AbilityViewModel
     public string Name => _model.Name;
     public Sprite Icon => _model.Icon;
     public bool HasModifier => _model.AttachedModifier != null;
-    public Sprite ModifierIcon => _model.AttachedModifier?.Icon;
 
     public event Action<bool> OnHighlightChanged;
     public event Action OnDataChanged;

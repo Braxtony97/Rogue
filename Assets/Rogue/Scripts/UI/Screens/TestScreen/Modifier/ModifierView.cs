@@ -9,7 +9,9 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     public ModifierViewModel ModifierViewModel => _viewModel;
 
-    [SerializeField] private Image icon;
+    [SerializeField] private Image iconLogo;
+    [SerializeField] private Image iconBack;
+
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text typeText;
     [SerializeField] private RectTransform rectTransform;
@@ -46,14 +48,16 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         else
         {
-            _viewModel.SetCompatibleHighlight(false);
+            _viewModel.SetCompatibleHighlight(false); 
         }
     }
 
     private void UpdateUI()
     {
-        nameText.text = _viewModel.Name;
+        nameText.text = _viewModel.Name; 
         typeText.text = _viewModel.ModifierType.ToString();
+        iconLogo.sprite = _viewModel.IconLogo;
+        iconBack.color = _viewModel.IconBackColor;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

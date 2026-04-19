@@ -15,3 +15,19 @@ MonoBehaviour:
   Characters:
   - {fileID: 11400000, guid: 8b62ad21c467d224e8338e7223a1d450, type: 2}
   - {fileID: 11400000, guid: 09b8d4cdb00912d45989d838f88f72ab, type: 2}
+  ModifierIcons:
+  - ModifierType: 0
+    IconLogo: {fileID: 21300000, guid: deb43f9e993a9594bb5218cc6c3969de, type: 3}
+    ColorBack: {r: 0.39215687, g: 0.35686275, b: 0.45490196, a: 1}
+  - ModifierType: 1
+    IconLogo: {fileID: 21300000, guid: e65e454f51df5f744b893badfd8f6e92, type: 3}
+    ColorBack: {r: 0.49411765, g: 0.43529412, b: 0.3254902, a: 1}
+  - ModifierType: 2
+    IconLogo: {fileID: 21300000, guid: 4f0a6c303447c9a4b9156264e033f146, type: 3}
+    ColorBack: {r: 0.39215687, g: 0.2627451, b: 0.22745098, a: 1}
+  - ModifierType: 3
+    IconLogo: {fileID: 21300000, guid: 60bf618c0b2afd24ab49a058d44e17c9, type: 3}
+    ColorBack: {r: 0.22745098, g: 0.30980393, b: 0.2627451, a: 1}
+  - ModifierType: 4
+    IconLogo: {fileID: 21300000, guid: 618541f72a654344b905e51b208331b0, type: 3}
+    ColorBack: {r: 0.45490196, g: 0.21568628, b: 0.21568628, a: 1}

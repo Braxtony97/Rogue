@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1173843861628021133, guid: f416ec9016593eb4e86ec16523685411, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1193654514540018735, guid: f416ec9016593eb4e86ec16523685411, type: 3}
       propertyPath: m_text
       value: Weave
