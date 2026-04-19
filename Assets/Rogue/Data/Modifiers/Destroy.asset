@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3ab276be8d882e48a479d9e2d4ef677, type: 3}
-  m_Name: NewModifier
+  m_Name: Destroy
   m_EditorClassIdentifier: Assembly-CSharp::ModifierData
-  Name: 
+  Name: Destroy
   Icon: {fileID: 0}
   ModifierType: 0
-  Description: 

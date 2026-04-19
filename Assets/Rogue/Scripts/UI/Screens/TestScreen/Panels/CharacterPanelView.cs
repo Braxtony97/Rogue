@@ -12,15 +12,22 @@ public class CharacterPanelView : PanelUI
     [SerializeField] private Image portraitImage;
 
     [Header("Abilities")]
-    [SerializeField] private Transform container;
+    [SerializeField] private Transform abilitiesContainer;
     [SerializeField] private AbilityView abilityPrefab;
+
+    [Header("Modifiers")]
+    [SerializeField] private Transform modifiersContainer;
+    [SerializeField] private ModifierView modifierPrefab;
 
     [Header("Characters Avatar")]
     [SerializeField] private CharacterView[] charactersView; 
 
+    [SerializeField] private RectMask2D mask; 
+
     private CharacterViewModel _currentViewModel;
     private List<CharacterViewModel> _characterViewModels;
     private List<AbilityView> _currentAbilityViews = new List<AbilityView>();
+    private List<ModifierView> _currentModifierViews = new List<ModifierView>();
 
     public override void Initialize(List<CharacterViewModel> characterViewModels)
     {
@@ -32,6 +39,7 @@ public class CharacterPanelView : PanelUI
         }
 
         UpdateUIData(_characterViewModels[0]);
+
         EventAggregator.Instance.Publish(new CharacterSelectedEvent(_characterViewModels[0].CharacterNameId));
 
         EventAggregator.Instance.Subscribe<CharacterSelectedEvent>(CharacterSelected);
@@ -58,21 +66,37 @@ public class CharacterPanelView : PanelUI
         UpdateHealthDisplay(characterViewModel.CurrentHealthText, characterViewModel.MaxHealthText);
         UpdateArmorDisplay(characterViewModel.CurrentArmorText, characterViewModel.MaxArmorText);
 
-        UpdateAbilities(characterViewModel.Abilities);
+        UpdateAbilities(characterViewModel.AbilityViewModels);
+        UpdateModifiers(characterViewModel.ModifierViewModels);
     }
 
-    private void UpdateAbilities(List<AbilityData> abilities)
+    private void UpdateAbilities(List<AbilityViewModel> abilityViewModels)
     {
         ClearAbilities();
 
-        if (abilities == null) 
+        if (abilityViewModels == null) 
             return;
 
-        foreach (var ability in abilities)
+        foreach (AbilityViewModel ability in abilityViewModels)
         {
-            var abilityView = Instantiate(abilityPrefab, container);
+            AbilityView abilityView = Instantiate(abilityPrefab, abilitiesContainer);
             abilityView.Initialize(ability);
             _currentAbilityViews.Add(abilityView);
+        }
+    }
+
+    private void UpdateModifiers(List<ModifierViewModel> modifierViewModels)
+    {
+        ClearModifiers();
+
+        if (modifierViewModels == null)
+            return;
+
+        foreach (ModifierViewModel modifier in modifierViewModels)
+        {
+            ModifierView modifierView = Instantiate(modifierPrefab, modifiersContainer);
+            modifierView.Initialize(modifier, mask); 
+            _currentModifierViews.Add(modifierView);
         }
     }
 
@@ -86,6 +110,16 @@ public class CharacterPanelView : PanelUI
         _currentAbilityViews.Clear();
     }
 
+    private void ClearModifiers()
+    {
+        foreach (ModifierView modifierView in _currentModifierViews)
+        {
+            if (modifierView != null)
+                Destroy(modifierView.gameObject);
+        }
+        _currentModifierViews.Clear();
+    }
+
     private void UpdateHealthDisplay(string currentHealth, string maxHealth) => 
         healthText.text = $"{currentHealth}/{maxHealth}";
 
@@ -95,6 +129,7 @@ public class CharacterPanelView : PanelUI
     public override void Deinitialize() 
     {
         ClearAbilities();
+        ClearModifiers();
         EventAggregator.Instance.Unsubscribe<CharacterSelectedEvent>(CharacterSelected);
     }
 }

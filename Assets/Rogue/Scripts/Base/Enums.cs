@@ -22,8 +22,11 @@ public static class Enums
 
     public enum ModifierType
     {
-        Syphon,
-        Buff
+        Psyker,
+        DOT,
+        Attack,
+        Buff,
+        Debuff
     }
 
     public enum ScreenType

@@ -26,7 +26,5 @@ public class EntryPoint : MonoBehaviour
         _uiManager.Initialize(_characterViewModels);
 
         _uiManager.OpenScreen(Enums.ScreenType.MainMenu);
-
-        
     }
 }

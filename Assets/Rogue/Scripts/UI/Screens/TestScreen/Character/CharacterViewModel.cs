@@ -6,6 +6,8 @@ public class CharacterViewModel
 {
     public event Action<string> OnHealthTextChanged;
     public event Action<string> OnArmorTextChanged;
+    public event Action OnAbilitiesChanged;
+    public event Action OnModifiersChanged;
 
     public string Name => _model.Name;
     public Enums.CharacterName CharacterNameId=> _model.CharacterNameId;
@@ -15,7 +17,8 @@ public class CharacterViewModel
     public string CurrentArmorText => $"{_model.CurrentArmor}";
     public string MaxHealthText => $"{_model.MaxHealth}";
     public string MaxArmorText => $"{_model.MaxArmor}";
-    public List<AbilityData> Abilities => _model.Abilities;
+    public List<AbilityViewModel> AbilityViewModels { get; private set;}
+    public List<ModifierViewModel> ModifierViewModels { get; private set; }
 
     private readonly CharacterModel _model;
 
@@ -23,7 +26,34 @@ public class CharacterViewModel
     {
         _model = model;
 
+        InitializeAbilities();
+        InitializeModifiers();
+
         Subscribe();
+    }
+
+    private void InitializeModifiers()
+    {
+        ModifierViewModels = new List<ModifierViewModel>();
+
+        foreach (ModifierModel modifierModel in _model.Modifiers)
+        {
+            ModifierViewModel modifier = new ModifierViewModel(modifierModel);
+            modifier.OnDataChanged += () => OnModifiersChanged?.Invoke();
+            ModifierViewModels.Add(modifier);
+        }
+    }
+
+    private void InitializeAbilities()
+    {
+        AbilityViewModels = new List<AbilityViewModel>();
+
+        foreach (AbilityModel abilityModel in _model.Abilities)
+        {
+            AbilityViewModel ability = new AbilityViewModel(abilityModel);
+            ability.OnDataChanged += () => OnAbilitiesChanged?.Invoke();
+            AbilityViewModels.Add(ability);
+        }
     }
 
     private void Subscribe()

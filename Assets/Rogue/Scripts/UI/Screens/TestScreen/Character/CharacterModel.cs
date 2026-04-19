@@ -33,9 +33,9 @@ public class CharacterModel
     public int MaxHealth => _data.MaxHealth;
     public int MaxArmor => _data.MaxArmor;
 
-    public List<AbilityData> Abilities => _data.Abilities;
+    public List<AbilityModel> Abilities { get; private set; }
 
-    public readonly List<ModifierData> Modifiers;
+    public List<ModifierModel> Modifiers { get; private set; }
 
     private int _currentHealth;
     private int _currentArmor;
@@ -46,6 +46,31 @@ public class CharacterModel
         _data = data;
         _currentHealth = _data.MaxHealth;
         _currentArmor = _data.MaxArmor;
+
+        InitializeAbilities();
+        InitializeModifiers();
+    }
+
+    private void InitializeModifiers()
+    {
+        Modifiers = new List<ModifierModel>();
+
+        foreach (ModifierData modifierData in _data.Modifiers)
+        {
+            ModifierModel modifierModel = new ModifierModel(modifierData);
+            Modifiers.Add(modifierModel);
+        }
+    }
+
+    private void InitializeAbilities()
+    {
+        Abilities = new List<AbilityModel>();
+
+        foreach (AbilityData abilityData in _data.Abilities)
+        {
+            AbilityModel abilityModel = new AbilityModel(abilityData);
+            Abilities.Add(abilityModel);
+        }
     }
 
     public void TakeDamage(int damage)

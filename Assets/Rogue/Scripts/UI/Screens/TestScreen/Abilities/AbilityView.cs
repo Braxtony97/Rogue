@@ -7,12 +7,12 @@ public class AbilityView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _nameText;
 
-    public void Initialize(AbilityData abilityData)
+    public void Initialize(AbilityViewModel ability)
     {
-        if (abilityData != null)
+        if (ability != null)
         {
-            _icon.sprite = abilityData.Icon;
-            _nameText.text = abilityData.Name;
+            _icon.sprite = ability.Icon;
+            _nameText.text = ability.Name;
         }
     }
 }
