@@ -16,3 +16,14 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 758a8754779423c4e9aaceaa9268c17b, type: 3}
   AbilityType: 1
   CompatibleModifiers: 02000000
+  ModifierPrefabs:
+  - Prefab: {fileID: 2549311149260060017, guid: e4acef7dbdfa91a4db86e854afe78098, type: 3}
+    ModifierType: 0
+  - Prefab: {fileID: 5480862943826098102, guid: aa939930286bb994196403091085c707, type: 3}
+    ModifierType: 1
+  - Prefab: {fileID: 4976421497629294274, guid: bb0a6cc4edb907040bab776d4ddde9f6, type: 3}
+    ModifierType: 2
+  - Prefab: {fileID: 5249116117104754734, guid: 9bee20688f92bbf43b2539b2bb57f9ea, type: 3}
+    ModifierType: 3
+  - Prefab: {fileID: 3028017313708174984, guid: 0483eeedd16f0724f8b0a0c0e5849da6, type: 3}
+    ModifierType: 4

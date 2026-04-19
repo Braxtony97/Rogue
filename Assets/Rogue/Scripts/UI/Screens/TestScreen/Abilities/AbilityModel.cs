@@ -23,10 +23,9 @@ public class AbilityModel
 
     public bool CanAttachModifier(ModifierModel modifier)
     {
-        return 
-            modifier != null && 
-            CompatibleModifiers.Contains(modifier.ModifierType) && 
-            AttachedModifier == null;
+        return
+            modifier != null &&
+            CompatibleModifiers.Contains(modifier.ModifierType);//AttachedModifier == null
     }
 
     public void AttachModifier(ModifierModel modifier)

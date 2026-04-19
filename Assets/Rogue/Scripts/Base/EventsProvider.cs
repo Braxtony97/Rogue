@@ -17,13 +17,25 @@ public static class EventsProvider
 
     public class AbilityHoverEvent
     {
-        public AbilityViewModel ViewModel;
-        public bool IsHover;
+        public AbilityViewModel ViewModel { get; }
+        public bool IsHover { get; }
 
         public AbilityHoverEvent(AbilityViewModel viewModel, bool isHover)
         {
             ViewModel = viewModel;
             IsHover = isHover;
+        }
+    }
+
+    public class ModifierDragStateChangedEvent
+    {
+        public ModifierViewModel Modifier { get; }
+        public bool IsDragging { get; }
+
+        public ModifierDragStateChangedEvent(ModifierViewModel modifier, bool isDragging)
+        {
+            Modifier = modifier;
+            IsDragging = isDragging;
         }
     }
 }

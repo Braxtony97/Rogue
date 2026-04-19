@@ -1,13 +1,26 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Enums;
 using static EventsProvider;
 
-public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler 
+[Serializable]
+public class ModifierPrefab
 {
-    [SerializeField] private Image _icon;
-    [SerializeField] private TMP_Text _nameText;
+    public GameObject Prefab;
+    public ModifierType ModifierType;
+}
+
+public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
+{
+    [SerializeField] private Image icon;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private GameObject selector;
+    [SerializeField] private List<ModifierPrefab> ModifierPrefabs;
 
     private AbilityViewModel _ability;
 
@@ -15,23 +28,84 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _ability = ability;
         _ability.OnDataChanged += UpdateUI;
+        _ability.OnHighlightChanged += UpdateHighlightState;
+        _ability.OnModifierAttached += ModifierAttache;
+        _ability.OnModifierDetached += ModifierDetache;
 
         UpdateUI();
+
+        EventAggregator.Instance.Subscribe<ModifierDragStateChangedEvent>(OnModifierDragStateChange);
+    }
+
+    private void ModifierAttache(ModifierModel model)
+    {
+        foreach (ModifierPrefab modifier in ModifierPrefabs)
+        { 
+            if (modifier.ModifierType == model.ModifierType)
+            {
+                modifier.Prefab.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
+    private void ModifierDetache()
+    {
+        foreach (ModifierPrefab modifier in ModifierPrefabs)
+        {
+            modifier.Prefab.gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateHighlightState(bool isHighLight)
+    {
+        selector.SetActive(isHighLight);
+    }
+
+    private void OnModifierDragStateChange(ModifierDragStateChangedEvent modifierDragStateChangedEvent)
+    {
+        if (modifierDragStateChangedEvent.IsDragging)
+            _ability.UpdateHighlightFromDrag(modifierDragStateChangedEvent.Modifier);
+        else
+            _ability.ClearDragHighlight();
     }
 
     private void UpdateUI()
     {
-        _icon.sprite = _ability.Icon;
-        _nameText.text = _ability.Name;
+        icon.sprite = _ability.Icon;
+        nameText.text = _ability.Name;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         EventAggregator.Instance.Publish(new AbilityHoverEvent(_ability, true));
+
+        selector.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         EventAggregator.Instance.Publish(new AbilityHoverEvent(_ability, false));
+
+        selector.SetActive(false);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        ModifierView draggedModifier = eventData.pointerDrag?.GetComponent<ModifierView>();
+
+        if (draggedModifier != null && _ability.CanAcceptModifier(draggedModifier.ModifierViewModel))
+        {
+            _ability.AttachModifier(draggedModifier.ModifierViewModel);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _ability.OnDataChanged -= UpdateUI;
+        _ability.OnHighlightChanged -= UpdateHighlightState;
+        _ability.OnModifierAttached -= ModifierAttache;
+        _ability.OnModifierDetached -= ModifierDetache;
+        EventAggregator.Instance.Unsubscribe<ModifierDragStateChangedEvent>(OnModifierDragStateChange);
     }
 }

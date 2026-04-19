@@ -8,19 +8,23 @@ public class AbilityViewModel
     public bool HasModifier => _model.AttachedModifier != null;
     public Sprite ModifierIcon => _model.AttachedModifier?.Icon;
 
+    public event Action<bool> OnHighlightChanged;
     public event Action OnDataChanged;
+    public event Action<ModifierModel> OnModifierAttached;
+    public event Action OnModifierDetached;
     public bool IsHighlighted => _isHighlighted;
     public AbilityModel GetModel() => _model;
 
     private readonly AbilityModel _model;
     private bool _isHighlighted;
+    private ModifierViewModel _currentlyDraggedModifier;
 
     public AbilityViewModel(AbilityModel model)
     {
         _model = model;
 
-        _model.OnModifierAttached += _ => OnDataChanged?.Invoke();
-        _model.OnModifierDetached += () => OnDataChanged?.Invoke();
+        _model.OnModifierAttached += (modifier) => OnModifierAttached?.Invoke(modifier);
+        _model.OnModifierDetached += () => OnModifierDetached?.Invoke();
     }
 
     public bool CanAcceptModifier(ModifierViewModel modifierViewModel)
@@ -28,9 +32,19 @@ public class AbilityViewModel
         return _model.CanAttachModifier(modifierViewModel?.GetModel());
     }
 
+    public void UpdateHighlightFromDrag(ModifierViewModel draggedModifier)
+    {
+        _currentlyDraggedModifier = draggedModifier;
+
+        bool shouldHighlight = draggedModifier != null && CanAcceptModifier(draggedModifier);
+
+        SetHighlight(shouldHighlight);
+    }
+
     public void AttachModifier(ModifierViewModel modifierViewModel)
     {
-        var modifierModel = modifierViewModel?.GetModel();
+        ModifierModel modifierModel = modifierViewModel?.GetModel();
+
         if (modifierModel == null || !CanAcceptModifier(modifierViewModel))
             return;
 
@@ -44,6 +58,7 @@ public class AbilityViewModel
     public void DetachModifier()
     {
         var attached = _model.AttachedModifier;
+
         if (attached != null)
         {
             attached.Detach();
@@ -54,6 +69,12 @@ public class AbilityViewModel
     public void SetHighlight(bool highlight)
     {
         _isHighlighted = highlight;
-        OnDataChanged?.Invoke();
+        OnHighlightChanged?.Invoke(_isHighlighted);
+    }
+
+    public void ClearDragHighlight()
+    {
+        _currentlyDraggedModifier = null;
+        SetHighlight(false);
     }
 }

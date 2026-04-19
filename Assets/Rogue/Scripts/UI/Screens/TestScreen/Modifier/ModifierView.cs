@@ -7,10 +7,13 @@ using static EventsProvider;
 
 public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public ModifierViewModel ModifierViewModel => _viewModel;
+
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text typeText;
     [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     [SerializeField] private GameObject highlight;
 
@@ -31,15 +34,20 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         UpdateUI();
     }
 
-    private void ChangeHighlight(bool isHighlight)
-    {
+    private void ChangeHighlight(bool isHighlight) => 
         highlight.SetActive(isHighlight);
-    }
 
     private void OnAbilityHover(AbilityHoverEvent abilityHoverEvent)
     {
-        bool isCompatible = _viewModel.CanAttachToAbility(abilityHoverEvent.ViewModel);
-        _viewModel.SetCompatibleHighlight(isCompatible); 
+        if (abilityHoverEvent.IsHover)
+        {
+            bool isCompatible = _viewModel.CanAttachToAbility(abilityHoverEvent.ViewModel);
+            _viewModel.SetCompatibleHighlight(isCompatible);
+        }
+        else
+        {
+            _viewModel.SetCompatibleHighlight(false);
+        }
     }
 
     private void UpdateUI()
@@ -50,6 +58,13 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.6f;
+
+        eventData.pointerDrag = gameObject;
+
+        _viewModel.SetDragging(true);
+
         if (_mask != null)
             _mask.enabled = false;
 
@@ -58,11 +73,13 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         Vector2 localPointerPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             rectTransform.parent as RectTransform,
-            eventData.position,
+            eventData.position, 
             eventData.pressEventCamera,
             out localPointerPosition);
 
         _offset = rectTransform.anchoredPosition - localPointerPosition;
+
+        EventAggregator.Instance.Publish(new ModifierDragStateChangedEvent(_viewModel, true));
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -82,10 +99,17 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+
+        _viewModel.SetDragging(false);
+
         if (_mask != null)
             _mask.enabled = true;
 
         rectTransform.anchoredPosition = _originalAnchoredPosition;
+
+        EventAggregator.Instance.Publish(new ModifierDragStateChangedEvent(_viewModel, false));
     }
 
     private void OnDestroy()

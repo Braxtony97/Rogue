@@ -3,24 +3,30 @@ using UnityEngine;
 
 public class ModifierViewModel
 {
+    public bool IsDragging => _isDragging;
     public string Name => _model.Name;
     public Sprite Icon => _model.Icon;
     public bool IsAttached => _model.IsAttached;
     public Enums.ModifierType ModifierType => _model.ModifierType;
 
     public event Action<bool> OnHighlihtChanged;
+    public event Action<bool> OnDragStateChanged;
     public bool IsCompatibleHighlight => _isCompatibleHighlight;
 
     private readonly ModifierModel _model;
     private bool _isHighlighted;
     private bool _isCompatibleHighlight;
+    private bool _isDragging;
 
     public ModifierViewModel(ModifierModel model)
     {
         _model = model;
+    }
 
-        //_model.OnAttached += _ => OnHighlihtChanged?.Invoke(); 
-        //_model.OnDetached += () => OnHighlihtChanged?.Invoke();
+    public void SetDragging(bool isDragging)
+    {
+        _isDragging = isDragging;
+        OnDragStateChanged?.Invoke(isDragging);
     }
 
     public bool CanAttachToAbility(AbilityViewModel abilityViewModel)
@@ -39,7 +45,7 @@ public class ModifierViewModel
     public void SetHighlight(bool highlight)
     {
         _isHighlighted = highlight;
-        OnHighlihtChanged?.Invoke(highlight);
+        //OnHighlihtChanged?.Invoke(highlight); 
     }
 
     public bool IsHighlighted => _isHighlighted;
