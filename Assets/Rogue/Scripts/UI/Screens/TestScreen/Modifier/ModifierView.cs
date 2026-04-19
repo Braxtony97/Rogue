@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static EventsProvider;
 
 public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -10,6 +11,8 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text typeText;
     [SerializeField] private RectTransform rectTransform;
+
+    [SerializeField] private GameObject highlight;
 
     private ModifierViewModel _viewModel;
     private RectMask2D _mask;
@@ -22,12 +25,27 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _viewModel = viewModel;
         _mask = mask;
 
+        EventAggregator.Instance.Subscribe<AbilityHoverEvent>(OnAbilityHover);
+        _viewModel.OnHighlihtChanged += ChangeHighlight; 
+
         UpdateUI();
+    }
+
+    private void ChangeHighlight(bool isHighlight)
+    {
+        highlight.SetActive(isHighlight);
+    }
+
+    private void OnAbilityHover(AbilityHoverEvent abilityHoverEvent)
+    {
+        bool isCompatible = _viewModel.CanAttachToAbility(abilityHoverEvent.ViewModel);
+        _viewModel.SetCompatibleHighlight(isCompatible); 
     }
 
     private void UpdateUI()
     {
         nameText.text = _viewModel.Name;
+        typeText.text = _viewModel.ModifierType.ToString();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -68,5 +86,14 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             _mask.enabled = true;
 
         rectTransform.anchoredPosition = _originalAnchoredPosition;
+    }
+
+    private void OnDestroy()
+    {
+        if (EventAggregator.Instance != null)
+            EventAggregator.Instance.Unsubscribe<AbilityHoverEvent>(OnAbilityHover);
+
+        if (_viewModel != null)
+            _viewModel.OnHighlihtChanged -= ChangeHighlight;
     }
 }

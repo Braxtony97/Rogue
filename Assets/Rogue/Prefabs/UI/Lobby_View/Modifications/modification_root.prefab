@@ -450,6 +450,7 @@ MonoBehaviour:
   nameText: {fileID: 1193654514540018735}
   typeText: {fileID: 2356488194050061466}
   rectTransform: {fileID: 1939624971870589400}
+  highlight: {fileID: 5789557302121132948}
 --- !u!1 &4242148956564797641
 GameObject:
   m_ObjectHideFlags: 0

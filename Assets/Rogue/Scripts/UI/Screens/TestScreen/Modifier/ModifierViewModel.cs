@@ -8,22 +8,24 @@ public class ModifierViewModel
     public bool IsAttached => _model.IsAttached;
     public Enums.ModifierType ModifierType => _model.ModifierType;
 
-    public event Action OnDataChanged;
+    public event Action<bool> OnHighlihtChanged;
+    public bool IsCompatibleHighlight => _isCompatibleHighlight;
 
     private readonly ModifierModel _model;
     private bool _isHighlighted;
+    private bool _isCompatibleHighlight;
 
     public ModifierViewModel(ModifierModel model)
     {
         _model = model;
 
-        _model.OnAttached += _ => OnDataChanged?.Invoke();
-        _model.OnDetached += () => OnDataChanged?.Invoke();
+        //_model.OnAttached += _ => OnHighlihtChanged?.Invoke(); 
+        //_model.OnDetached += () => OnHighlihtChanged?.Invoke();
     }
 
-    public bool CanAttachToAbility(AbilityViewModel abilityVM)
+    public bool CanAttachToAbility(AbilityViewModel abilityViewModel)
     {
-        return abilityVM?.CanAcceptModifier(this) ?? false;
+        return abilityViewModel?.CanAcceptModifier(this) ?? false;
     }
 
     public void AttachToAbility(AbilityViewModel abilityVM)
@@ -37,9 +39,15 @@ public class ModifierViewModel
     public void SetHighlight(bool highlight)
     {
         _isHighlighted = highlight;
-        OnDataChanged?.Invoke();
+        OnHighlihtChanged?.Invoke(highlight);
     }
 
     public bool IsHighlighted => _isHighlighted;
     public ModifierModel GetModel() => _model;
+
+    public void SetCompatibleHighlight(bool isCompatible)
+    {
+        _isCompatibleHighlight = isCompatible;
+        OnHighlihtChanged?.Invoke(_isCompatibleHighlight);
+    }
 }

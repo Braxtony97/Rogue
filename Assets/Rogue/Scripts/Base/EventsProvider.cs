@@ -14,4 +14,16 @@ public static class EventsProvider
         public CharacterSelectedEvent(Enums.CharacterName name) => 
             CharacterName = name;
     }
+
+    public class AbilityHoverEvent
+    {
+        public AbilityViewModel ViewModel;
+        public bool IsHover;
+
+        public AbilityHoverEvent(AbilityViewModel viewModel, bool isHover)
+        {
+            ViewModel = viewModel;
+            IsHover = isHover;
+        }
+    }
 }

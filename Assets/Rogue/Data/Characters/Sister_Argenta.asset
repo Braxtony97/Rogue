@@ -20,4 +20,7 @@ MonoBehaviour:
   MaxArmor: 343
   Abilities:
   - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
-  Modifiers: []
+  Modifiers:
+  - {fileID: 11400000, guid: f37d9dbc51d276d429ec81184873799e, type: 2}
+  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
+  - {fileID: 11400000, guid: a9f4e684cb0857d4b9d83810b2d6a32f, type: 2}

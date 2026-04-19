@@ -6,8 +6,6 @@ public class CharacterViewModel
 {
     public event Action<string> OnHealthTextChanged;
     public event Action<string> OnArmorTextChanged;
-    public event Action OnAbilitiesChanged;
-    public event Action OnModifiersChanged;
 
     public string Name => _model.Name;
     public Enums.CharacterName CharacterNameId=> _model.CharacterNameId;
@@ -39,7 +37,6 @@ public class CharacterViewModel
         foreach (ModifierModel modifierModel in _model.Modifiers)
         {
             ModifierViewModel modifier = new ModifierViewModel(modifierModel);
-            modifier.OnDataChanged += () => OnModifiersChanged?.Invoke();
             ModifierViewModels.Add(modifier);
         }
     }
@@ -51,7 +48,6 @@ public class CharacterViewModel
         foreach (AbilityModel abilityModel in _model.Abilities)
         {
             AbilityViewModel ability = new AbilityViewModel(abilityModel);
-            ability.OnDataChanged += () => OnAbilitiesChanged?.Invoke();
             AbilityViewModels.Add(ability);
         }
     }
