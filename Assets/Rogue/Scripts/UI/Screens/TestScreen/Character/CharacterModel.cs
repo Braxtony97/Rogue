@@ -42,6 +42,7 @@ public class CharacterModel
     private int _currentArmor;
     private readonly CharacterData _characterData;
     private readonly GameData _gameData;
+    private Dictionary<Enums.AbilityName, Enums.ModifierName> _modifierToAbilityBindings = new Dictionary<Enums.AbilityName, Enums.ModifierName>();
 
     public CharacterModel(CharacterData characterData, GameData data)
     {
@@ -90,5 +91,21 @@ public class CharacterModel
         {
             CurrentHealth -= remainingDamage;
         }
+    }
+
+    public void AttachModifierToAbility(Enums.AbilityName ability, Enums.ModifierName modifire) => 
+        _modifierToAbilityBindings[ability] = modifire;
+
+    public void DetachModifier(Enums.AbilityName ability)
+    {
+        if (_modifierToAbilityBindings.ContainsKey(ability))
+            _modifierToAbilityBindings.Remove(ability);
+    }
+
+    public Enums.ModifierName GetModifierForAbility(Enums.AbilityName ability)
+    {
+        return _modifierToAbilityBindings.TryGetValue(ability, out Enums.ModifierName modifire)
+            ? modifire
+            : default;
     }
 }

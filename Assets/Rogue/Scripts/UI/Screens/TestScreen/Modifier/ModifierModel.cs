@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static Enums;
 
 public class ModifierModel
 {
@@ -7,6 +8,7 @@ public class ModifierModel
     public Sprite IconLogo { get; private set; }
     public Color IconBackColor { get; }
     public Enums.ModifierType ModifierType { get; private set; }
+    public Enums.ModifierName ModifierName { get; private set; }
     public bool IsAttached => AttachedToAbility != null;
 
     public AbilityModel AttachedToAbility { get; private set; }
@@ -18,6 +20,7 @@ public class ModifierModel
     {
         Name = data.Name;
         ModifierType = data.ModifierType;
+        ModifierName = data.ModifierName;
 
         ModifierIcon modifierIcon = gameData.GetModifierIcon(ModifierType);
         IconLogo = modifierIcon.IconLogo;

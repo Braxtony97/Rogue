@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Destroy
   m_EditorClassIdentifier: Assembly-CSharp::ModifierData
   Name: Destroy
-  Icon: {fileID: 0}
+  ModifierName: 1
   ModifierType: 0

@@ -11,7 +11,7 @@ public static class Enums
         Ulfar
     }
 
-    public enum AbilityType
+    public enum AbilityName
     {
         SyphonLife,
         Despair,
@@ -23,8 +23,11 @@ public static class Enums
 
     public enum ModifierName
     {
-        Syphon,
-        Buff
+        Confuse,
+        Destroy,
+        Protect,
+        Tear,
+        Weave
     }
 
     public enum ModifierType

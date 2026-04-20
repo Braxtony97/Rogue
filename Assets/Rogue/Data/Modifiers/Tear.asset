@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Tear
   m_EditorClassIdentifier: Assembly-CSharp::ModifierData
   Name: Tear
+  ModifierName: 3
   ModifierType: 4
