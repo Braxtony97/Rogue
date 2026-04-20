@@ -3,7 +3,12 @@ public static class Enums
     public enum CharacterName
     {
         SisterArgenta,
-        CrimeLord
+        CrimeLord,
+        AdeptusMinistorum,
+        HeinrixVanKallox,
+        MarazaiAeziraesh,
+        Kibella,
+        Ulfar
     }
 
     public enum AbilityType
@@ -11,7 +16,9 @@ public static class Enums
         SyphonLife,
         Despair,
         Assail,
-        GetBackInFight
+        GetBackInFight,
+        BringItDown,
+        GetBackItFight
     }
 
     public enum ModifierName

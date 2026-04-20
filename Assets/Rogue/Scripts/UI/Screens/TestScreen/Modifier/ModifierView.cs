@@ -16,6 +16,7 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private TMP_Text typeText;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private GameObject deactivatePanel;
 
     [SerializeField] private GameObject highlight;
 
@@ -31,10 +32,14 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _mask = mask;
 
         EventAggregator.Instance.Subscribe<AbilityHoverEvent>(OnAbilityHover);
-        _viewModel.OnHighlihtChanged += ChangeHighlight; 
+        _viewModel.OnHighlihtChanged += ChangeHighlight;
+        _viewModel.OnAttachedChanged += AttachedChanged;
 
         UpdateUI();
     }
+
+    private void AttachedChanged(bool isAttached) => 
+        deactivatePanel.gameObject.SetActive(isAttached);
 
     private void ChangeHighlight(bool isHighlight) => 
         highlight.SetActive(isHighlight);

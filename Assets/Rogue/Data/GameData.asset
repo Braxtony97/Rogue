@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: Assembly-CSharp::GameData
   Characters:
-  - {fileID: 11400000, guid: 8b62ad21c467d224e8338e7223a1d450, type: 2}
+  - {fileID: 11400000, guid: cc600975e3d45824b86a13bac87dd76e, type: 2}
   - {fileID: 11400000, guid: 09b8d4cdb00912d45989d838f88f72ab, type: 2}
+  - {fileID: 11400000, guid: ccd4252b272b85b45bfd7a29f61ac9e0, type: 2}
+  - {fileID: 11400000, guid: 116503c6c4d4d0446868ec210c05a391, type: 2}
+  - {fileID: 11400000, guid: f888e779edd55be458750bdec2fcf14a, type: 2}
+  - {fileID: 11400000, guid: a44e4a83940a5dc4d9cf15b2d3a37f67, type: 2}
   ModifierIcons:
   - ModifierType: 0
     IconLogo: {fileID: 21300000, guid: deb43f9e993a9594bb5218cc6c3969de, type: 3}

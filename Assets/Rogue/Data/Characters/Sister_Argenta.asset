@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Sister Argenta
   CharacterNameId: 0
   Avatar: {fileID: 21300000, guid: 604c74cb1c2d46643a372faca26763f2, type: 3}
-  FullPortrait: {fileID: 21300000, guid: eb38c9e4e472e5a48a3057756ad8f9b6, type: 3}
+  FullPortrait: {fileID: 21300000, guid: 8da1afdeea689d144ad4392e7023a1c1, type: 3}
   MaxHealth: 456
   MaxArmor: 343
   Abilities:

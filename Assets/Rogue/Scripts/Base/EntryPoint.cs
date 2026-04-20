@@ -16,7 +16,7 @@ public class EntryPoint : MonoBehaviour
 
     private void LoadGame()
     {
-        foreach (var characterData in _data.Characters)
+        foreach (CharacterData characterData in _data.Characters)
         {
             var model = new CharacterModel(characterData, _data);
             var viewModel = new CharacterViewModel(model);

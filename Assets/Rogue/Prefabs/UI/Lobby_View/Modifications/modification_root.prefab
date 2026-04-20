@@ -452,6 +452,7 @@ MonoBehaviour:
   typeText: {fileID: 2356488194050061466}
   rectTransform: {fileID: 1939624971870589400}
   canvasGroup: {fileID: 1799064632204800178}
+  deactivatePanel: {fileID: 6984188474809751621}
   highlight: {fileID: 5789557302121132948}
 --- !u!1 &4816896604948027490
 GameObject:

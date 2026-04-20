@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee53a95c0e7a7f43a6fd46e25e166b8, type: 3}
-  m_Name: CrimeLord
+  m_Name: MarazaiAeziraesh
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  Name: Crime Lord
-  CharacterNameId: 1
-  Avatar: {fileID: 21300000, guid: 43c5a664f7e53b640a28b34f5ff352ef, type: 3}
-  FullPortrait: {fileID: 21300000, guid: 6b3ffb3811392b649a73b46ba311eedd, type: 3}
-  MaxHealth: 160
-  MaxArmor: 180
+  Name: Marazai Aeziraesh
+  CharacterNameId: 4
+  Avatar: {fileID: 21300000, guid: 8d8639317b560f340843962f99238e71, type: 3}
+  FullPortrait: {fileID: 21300000, guid: ee4fc222eac48924d9d2c79302766de9, type: 3}
+  MaxHealth: 456
+  MaxArmor: 343
   Abilities:
-  - {fileID: 11400000, guid: b56158974ca4a604291831592ca967c3, type: 2}
   - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
   Modifiers:
-  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
   - {fileID: 11400000, guid: f37d9dbc51d276d429ec81184873799e, type: 2}
+  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
   - {fileID: 11400000, guid: a9f4e684cb0857d4b9d83810b2d6a32f, type: 2}

@@ -5,6 +5,7 @@ public class ModifierViewModel
 {
     public event Action<bool> OnHighlihtChanged;
     public event Action<bool> OnDragStateChanged;
+    public event Action<bool> OnAttachedChanged;
 
     public ModifierModel GetModel() => _model;
     public string Name => _model.Name;
@@ -21,6 +22,9 @@ public class ModifierViewModel
     public ModifierViewModel(ModifierModel model)
     {
         _model = model;
+
+        _model.OnAttached += OnAttached;
+        _model.OnDetached += OnDetached;
     }
 
     public void SetDragging(bool isDragging)
@@ -29,17 +33,27 @@ public class ModifierViewModel
         OnDragStateChanged?.Invoke(isDragging);
     }
 
+    private void OnAttached(AbilityModel ability)
+    {
+        OnAttachedChanged?.Invoke(true);
+    }
+
+    private void OnDetached()
+    {
+        OnAttachedChanged?.Invoke(false);
+    }
+
     public bool CanAttachToAbility(AbilityViewModel abilityViewModel)
     {
         return abilityViewModel?.CanAcceptModifier(this) ?? false;
     }
 
-    public void AttachToAbility(AbilityViewModel abilityVM)
+    public void AttachToAbility(AbilityViewModel abilityViewModel)
     {
-        if (!CanAttachToAbility(abilityVM))
+        if (!CanAttachToAbility(abilityViewModel))
             return;
 
-        abilityVM.AttachModifier(this);
+        abilityViewModel.AttachModifier(this);
     }
 
     public void SetCompatibleHighlight(bool isCompatible)
