@@ -11,7 +11,7 @@ public class ModifierViewModel
     public string Name => _model.Name;
     public Sprite IconLogo => _model.IconLogo;
     public Color IconBackColor => _model.IconBackColor;
-    public bool IsAttached => _model.IsAttached;
+    public bool IsAttached => _model.IsAttached; 
     public Enums.ModifierType ModifierType => _model.ModifierType;
 
     private readonly ModifierModel _model;
@@ -45,6 +45,9 @@ public class ModifierViewModel
 
     public bool CanAttachToAbility(AbilityViewModel abilityViewModel)
     {
+        if (_model.IsAttached)
+            return false;
+
         return abilityViewModel?.CanAcceptModifier(this) ?? false;
     }
 

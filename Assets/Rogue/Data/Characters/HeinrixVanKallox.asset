@@ -15,9 +15,9 @@ MonoBehaviour:
   Name: Heinrix van Kallox
   CharacterNameId: 3
   Avatar: {fileID: 21300000, guid: d4ec1b698cc563e4a8ea32b6c0dfd3e3, type: 3}
-  FullPortrait: {fileID: 21300000, guid: 52e509784a42bfe46a3172c331515b18, type: 3}
-  MaxHealth: 456
-  MaxArmor: 343
+  FullPortrait: {fileID: 21300000, guid: 7a57010eac012ff46aa4e01e1d95eaf2, type: 3}
+  MaxHealth: 174
+  MaxArmor: 245
   Abilities:
   - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
   Modifiers:

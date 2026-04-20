@@ -47,11 +47,18 @@ public class AbilityViewModel
         if (modifierModel == null || !CanAcceptModifier(modifierViewModel))
             return;
 
+        ModifierModel oldModifier = _model.AttachedModifier;
+
+        if (oldModifier != null)
+        {
+            oldModifier.Detach(); 
+        }
+
         if (_model.AttachedModifier != null)
             _model.DetachModifier();
 
         _model.AttachModifier(modifierModel);
-        modifierModel.AttachToAbility(_model);
+        modifierModel.AttachToAbility(_model); 
     }
 
     public void DetachModifier()

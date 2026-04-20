@@ -16,8 +16,8 @@ MonoBehaviour:
   CharacterNameId: 1
   Avatar: {fileID: 21300000, guid: 43c5a664f7e53b640a28b34f5ff352ef, type: 3}
   FullPortrait: {fileID: 21300000, guid: 6b3ffb3811392b649a73b46ba311eedd, type: 3}
-  MaxHealth: 160
-  MaxArmor: 180
+  MaxHealth: 130
+  MaxArmor: 130
   Abilities:
   - {fileID: 11400000, guid: b56158974ca4a604291831592ca967c3, type: 2}
   - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}

@@ -38,8 +38,10 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         UpdateUI();
     }
 
-    private void AttachedChanged(bool isAttached) => 
+    private void AttachedChanged(bool isAttached)
+    {
         deactivatePanel.gameObject.SetActive(isAttached);
+    }
 
     private void ChangeHighlight(bool isHighlight) => 
         highlight.SetActive(isHighlight);
@@ -48,7 +50,7 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (abilityHoverEvent.IsHover)
         {
-            bool isCompatible = _viewModel.CanAttachToAbility(abilityHoverEvent.ViewModel);
+            bool isCompatible = _viewModel.CanAttachToAbility(abilityHoverEvent.ViewModel) && !_viewModel.IsAttached;
             _viewModel.SetCompatibleHighlight(isCompatible);
         }
         else
@@ -67,6 +69,12 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_viewModel.IsAttached)
+        {
+            eventData.pointerDrag = null;
+            return;
+        }
+
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.6f;
 
@@ -93,17 +101,17 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!_viewModel.IsAttached)
-        {
-            Vector2 localPointerPosition;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                rectTransform.parent as RectTransform,
-                eventData.position,
-                eventData.pressEventCamera,
-                out localPointerPosition);
+        if (_viewModel.IsAttached)
+            return;
 
-            rectTransform.anchoredPosition = localPointerPosition + _offset;
-        }
+        Vector2 localPointerPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform.parent as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out localPointerPosition);
+
+        rectTransform.anchoredPosition = localPointerPosition + _offset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -123,10 +131,8 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     private void OnDestroy()
     {
-        if (EventAggregator.Instance != null)
-            EventAggregator.Instance.Unsubscribe<AbilityHoverEvent>(OnAbilityHover);
-
-        if (_viewModel != null)
-            _viewModel.OnHighlihtChanged -= ChangeHighlight;
+        EventAggregator.Instance.Unsubscribe<AbilityHoverEvent>(OnAbilityHover);
+        _viewModel.OnHighlihtChanged -= ChangeHighlight;
+        _viewModel.OnAttachedChanged -= AttachedChanged;
     }
 }
