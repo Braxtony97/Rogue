@@ -5,10 +5,11 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public string Name;
+    public Enums.CharacterName CharacterNameId;
     public Sprite Avatar;
     public Sprite FullPortrait;
     public int MaxHealth;
     public int MaxArmor;
-    public List<AbilityData> abilities;
-    public List<ModifierData> modifiers;
+    public List<AbilityData> Abilities;
+    public List<ModifierData> Modifiers;
 }

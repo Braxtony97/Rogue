@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee53a95c0e7a7f43a6fd46e25e166b8, type: 3}
+  m_Name: Kibella
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  Name: Kibella
+  CharacterNameId: 5
+  Avatar: {fileID: 21300000, guid: b0e64d03fbf6b3e498bbb27ddbf13b2b, type: 3}
+  FullPortrait: {fileID: 21300000, guid: 212c1fa3016559848b2f1054b5650646, type: 3}
+  MaxHealth: 160
+  MaxArmor: 70
+  Abilities:
+  - {fileID: 11400000, guid: f3eb2bc244fde7e439ba7ecc27bf07d1, type: 2}
+  - {fileID: 11400000, guid: 2993d82eab9a0ed439da8f661d4ebe46, type: 2}
+  - {fileID: 11400000, guid: c5e54f935d1dc544b8bed16b0fd5d6dc, type: 2}
+  - {fileID: 11400000, guid: 78dc27b051795fc459e019706ef1a3c2, type: 2}
+  - {fileID: 11400000, guid: f074802535934124f9b662a9717ee9cd, type: 2}
+  - {fileID: 11400000, guid: 076e1225f21bb514f98e4962b0e4375e, type: 2}
+  - {fileID: 11400000, guid: b56158974ca4a604291831592ca967c3, type: 2}
+  - {fileID: 11400000, guid: aeb818b53b068384eacf92e2ecb2a90c, type: 2}
+  - {fileID: 11400000, guid: fdfe173021475894587ae6da9efd9821, type: 2}
+  - {fileID: 11400000, guid: b40054889dffb164e869da2258219a92, type: 2}
+  Modifiers:
+  - {fileID: 11400000, guid: f0d6f14b53f633b40b92f9b682d5d50d, type: 2}
+  - {fileID: 11400000, guid: f37d9dbc51d276d429ec81184873799e, type: 2}
+  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
+  - {fileID: 11400000, guid: a9f4e684cb0857d4b9d83810b2d6a32f, type: 2}
+  - {fileID: 11400000, guid: 150a3ae677e2db244b12848f41207797, type: 2}
+  - {fileID: 11400000, guid: db983dfc1f38ad44da37c3069af65042, type: 2}

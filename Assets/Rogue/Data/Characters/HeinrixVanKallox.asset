@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee53a95c0e7a7f43a6fd46e25e166b8, type: 3}
+  m_Name: HeinrixVanKallox
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  Name: Heinrix van Kallox
+  CharacterNameId: 3
+  Avatar: {fileID: 21300000, guid: d4ec1b698cc563e4a8ea32b6c0dfd3e3, type: 3}
+  FullPortrait: {fileID: 21300000, guid: 7a57010eac012ff46aa4e01e1d95eaf2, type: 3}
+  MaxHealth: 174
+  MaxArmor: 245
+  Abilities:
+  - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
+  Modifiers:
+  - {fileID: 11400000, guid: f37d9dbc51d276d429ec81184873799e, type: 2}
+  - {fileID: 11400000, guid: 98d2fa12016ea2c4d95c197727a5baf0, type: 2}

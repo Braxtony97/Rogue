@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee53a95c0e7a7f43a6fd46e25e166b8, type: 3}
+  m_Name: MarazaiAeziraesh
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  Name: Marazai Aeziraesh
+  CharacterNameId: 4
+  Avatar: {fileID: 21300000, guid: 8d8639317b560f340843962f99238e71, type: 3}
+  FullPortrait: {fileID: 21300000, guid: ee4fc222eac48924d9d2c79302766de9, type: 3}
+  MaxHealth: 195
+  MaxArmor: 75
+  Abilities:
+  - {fileID: 11400000, guid: aeb818b53b068384eacf92e2ecb2a90c, type: 2}
+  - {fileID: 11400000, guid: fdfe173021475894587ae6da9efd9821, type: 2}
+  - {fileID: 11400000, guid: b40054889dffb164e869da2258219a92, type: 2}
+  - {fileID: 11400000, guid: 4ef1d08cc2a1ab747ac458a72b3558e9, type: 2}
+  - {fileID: 11400000, guid: 1ef040ac819297149a9764a692d45c14, type: 2}
+  Modifiers:
+  - {fileID: 11400000, guid: a9f4e684cb0857d4b9d83810b2d6a32f, type: 2}
+  - {fileID: 11400000, guid: db983dfc1f38ad44da37c3069af65042, type: 2}
+  - {fileID: 11400000, guid: 51ff659f6af3838448d6b4578f65c2f3, type: 2}
+  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
+  - {fileID: 11400000, guid: 21c2da2372245554ba0f313f6a0c0a15, type: 2}
