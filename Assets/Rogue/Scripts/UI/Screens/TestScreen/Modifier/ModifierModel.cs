@@ -7,7 +7,7 @@ public class ModifierModel
     public Sprite IconLogo { get; private set; }
     public Color IconBackColor { get; }
     public Enums.ModifierType ModifierType { get; private set; }
-    public Enums.ModifierName ModifierName { get; private set; }
+    public Enums.ModifierNameId ModifierName { get; private set; }
     public bool IsAttached => AttachedToAbility != null;
 
     public AbilityModel AttachedToAbility { get; private set; }

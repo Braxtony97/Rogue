@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Protect
   m_EditorClassIdentifier: Assembly-CSharp::ModifierData
   Name: Protect
-  ModifierName: 2
+  ModifierName: 3
   ModifierType: 3

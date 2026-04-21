@@ -19,8 +19,14 @@ MonoBehaviour:
   MaxHealth: 195
   MaxArmor: 75
   Abilities:
-  - {fileID: 11400000, guid: 3f2ff7adb902261469ef617f4074222b, type: 2}
+  - {fileID: 11400000, guid: aeb818b53b068384eacf92e2ecb2a90c, type: 2}
+  - {fileID: 11400000, guid: fdfe173021475894587ae6da9efd9821, type: 2}
+  - {fileID: 11400000, guid: b40054889dffb164e869da2258219a92, type: 2}
+  - {fileID: 11400000, guid: 4ef1d08cc2a1ab747ac458a72b3558e9, type: 2}
+  - {fileID: 11400000, guid: 1ef040ac819297149a9764a692d45c14, type: 2}
   Modifiers:
-  - {fileID: 11400000, guid: f37d9dbc51d276d429ec81184873799e, type: 2}
-  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
   - {fileID: 11400000, guid: a9f4e684cb0857d4b9d83810b2d6a32f, type: 2}
+  - {fileID: 11400000, guid: db983dfc1f38ad44da37c3069af65042, type: 2}
+  - {fileID: 11400000, guid: 51ff659f6af3838448d6b4578f65c2f3, type: 2}
+  - {fileID: 11400000, guid: ada8e7e78765aa949920004670a1ddaa, type: 2}
+  - {fileID: 11400000, guid: 21c2da2372245554ba0f313f6a0c0a15, type: 2}

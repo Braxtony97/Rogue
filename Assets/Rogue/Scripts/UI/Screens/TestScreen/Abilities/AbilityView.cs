@@ -77,7 +77,7 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void UpdateUI()
     {
         icon.sprite = _ability.Icon;
-        nameText.text = _ability.Name.ToString();
+        nameText.text = _ability.Name; 
 
         ModifierAttache(_modifierModel);
     }

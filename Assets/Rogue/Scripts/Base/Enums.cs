@@ -11,24 +11,39 @@ public static class Enums
         Ulfar
     }
 
-    public enum AbilityName
+    public enum AbilityNameId
     {
         SyphonLife,
         Despair,
         Assail,
         GetBackInFight,
         BringItDown,
-        GetBackItFight
+        GetBackItFight,
+        BerserkMode,
+        BladeShroud,
+        OffhandShot,
+        OneHundredSwords,
+        SpeedUp,
+        StealSoul,
+        TakeAim,
+        TremblingVoice,
+        AuraProtection
     }
 
-    public enum ModifierName
+    public enum ModifierNameId
     {
         None,
         Confuse,
         Destroy,
         Protect,
         Tear,
-        Weave
+        Weave,
+        CripplingImpact,
+        IronArmor,
+        FogMind,
+        ChainReaction,
+        ArmorBreaker,
+        AcidBurn
     }
 
     public enum ModifierType

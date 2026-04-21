@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Bring It Down
   Icon: {fileID: 21300000, guid: 34e8da0b925675b4f946582de174b454, type: 3}
   AbilityType: 4
-  CompatibleModifiers: 03000000
+  CompatibleModifiers: 010000000300000004000000

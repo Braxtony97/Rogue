@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Weave
   m_EditorClassIdentifier: Assembly-CSharp::ModifierData
   Name: Weave
-  ModifierName: 4
+  ModifierName: 5
   ModifierType: 2

@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Get Back It Fight
   Icon: {fileID: 21300000, guid: 2df571eb9459bb840a40944b75d1cd20, type: 3}
   AbilityType: 5
-  CompatibleModifiers: 04000000
+  CompatibleModifiers: 0200000003000000

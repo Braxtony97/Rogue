@@ -6,7 +6,7 @@ public class AbilityModel
 {
     public string Name { get; private set; }
     public Sprite Icon { get; private set; }
-    public Enums.AbilityName AbilityName { get; private set; }
+    public Enums.AbilityNameId AbilityName { get; private set; }
     public List<Enums.ModifierType> CompatibleModifiers { get; private set; }
     public ModifierModel AttachedModifier { get; private set; }
 

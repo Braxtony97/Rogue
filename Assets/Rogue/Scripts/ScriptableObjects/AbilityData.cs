@@ -7,6 +7,6 @@ public class AbilityData : ScriptableObject
 {
     public string Name;
     public Sprite Icon;
-    public AbilityName AbilityType;
+    public AbilityNameId AbilityType;
     public List<ModifierType> CompatibleModifiers;
 }

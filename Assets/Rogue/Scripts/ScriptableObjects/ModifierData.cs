@@ -5,6 +5,6 @@ using static Enums;
 public class ModifierData : ScriptableObject
 {
     public string Name;
-    public ModifierName ModifierName;
+    public ModifierNameId ModifierName;
     public ModifierType ModifierType;
 }
