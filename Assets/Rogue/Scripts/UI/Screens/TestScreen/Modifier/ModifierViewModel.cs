@@ -9,6 +9,7 @@ public class ModifierViewModel
 
     public ModifierModel GetModel() => _model;
     public string Name => _model.Name;
+    public Enums.ModifierName ModifierNameId => _model.ModifierName;
     public Sprite IconLogo => _model.IconLogo;
     public Color IconBackColor => _model.IconBackColor;
     public bool IsAttached => _model.IsAttached; 

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -23,10 +22,12 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private List<ModifierPrefab> ModifierPrefabs;
 
     private AbilityViewModel _ability;
+    private ModifierModel _modifierModel;
 
-    public void Initialize(AbilityViewModel ability)
+    public void Initialize(AbilityViewModel ability, ModifierModel modifierModel)
     {
         _ability = ability;
+        _modifierModel = modifierModel;
         _ability.OnDataChanged += UpdateUI;
         _ability.OnHighlightChanged += UpdateHighlightState;
         _ability.OnModifierAttached += ModifierAttache;
@@ -39,6 +40,9 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void ModifierAttache(ModifierModel model)
     {
+        if (model  == null) 
+            return;
+
         foreach (ModifierPrefab modifier in ModifierPrefabs)
         { 
             if (modifier.ModifierType == model.ModifierType)
@@ -73,7 +77,9 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void UpdateUI()
     {
         icon.sprite = _ability.Icon;
-        nameText.text = _ability.Name;
+        nameText.text = _ability.Name.ToString();
+
+        ModifierAttache(_modifierModel);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -17,6 +17,7 @@ public class CharacterViewModel
     public string MaxArmorText => $"{_model.MaxArmor}";
     public List<AbilityViewModel> AbilityViewModels { get; private set;}
     public List<ModifierViewModel> ModifierViewModels { get; private set; }
+    public Dictionary<AbilityModel, ModifierModel> ModifierToAbilityBindings => _model.ModifierToAbilityBindings;
 
     private readonly CharacterModel _model;
 
@@ -56,6 +57,13 @@ public class CharacterViewModel
     {
         _model.OnHealthChanged += OnHealthChanged;
         _model.OnArmorChanged += OnArmorChanged;
+
+        EventAggregator.Instance.Subscribe<EventsProvider.ModifierAttachEvent>(ModifierAttached);
+    }
+
+    private void ModifierAttached(EventsProvider.ModifierAttachEvent modifierAttachEvent)
+    {
+        _model.AttachModifierToAbility(modifierAttachEvent.AbilityModel, modifierAttachEvent.ModifierModel);
     }
 
     private void OnHealthChanged(int health) => 
@@ -71,5 +79,7 @@ public class CharacterViewModel
     {
         _model.OnHealthChanged -= OnHealthChanged;
         _model.OnArmorChanged -= OnArmorChanged;
+
+        EventAggregator.Instance.Unsubscribe<EventsProvider.ModifierAttachEvent>(ModifierAttached);
     }
 }

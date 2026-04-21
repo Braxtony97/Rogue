@@ -5,6 +5,9 @@ using UnityEngine.Playables;
 
 public class CharacterModel
 {
+    public event Action<int> OnHealthChanged;
+    public event Action<int> OnArmorChanged;
+
     public int CurrentHealth
     {
         get => _currentHealth;
@@ -24,9 +27,7 @@ public class CharacterModel
             OnArmorChanged?.Invoke(_currentArmor);
         }
     }
-
-    public event Action<int> OnHealthChanged;
-    public event Action<int> OnArmorChanged;
+    
     public string Name => _characterData.Name;
     public Enums.CharacterName CharacterNameId => _characterData.CharacterNameId;
     public Sprite Avatar => _characterData.Avatar;
@@ -37,12 +38,14 @@ public class CharacterModel
     public List<AbilityModel> Abilities { get; private set; }
 
     public List<ModifierModel> Modifiers { get; private set; }
+    public Dictionary<AbilityModel, ModifierModel> ModifierToAbilityBindings => _modifierToAbilityBindings;
 
     private int _currentHealth;
     private int _currentArmor;
     private readonly CharacterData _characterData;
     private readonly GameData _gameData;
-    private Dictionary<Enums.AbilityName, Enums.ModifierName> _modifierToAbilityBindings = new Dictionary<Enums.AbilityName, Enums.ModifierName>();
+
+    private Dictionary<AbilityModel, ModifierModel> _modifierToAbilityBindings = new Dictionary<AbilityModel, ModifierModel>();
 
     public CharacterModel(CharacterData characterData, GameData data)
     {
@@ -93,19 +96,19 @@ public class CharacterModel
         }
     }
 
-    public void AttachModifierToAbility(Enums.AbilityName ability, Enums.ModifierName modifire) => 
+    public void AttachModifierToAbility(AbilityModel ability, ModifierModel modifire) => 
         _modifierToAbilityBindings[ability] = modifire;
 
-    public void DetachModifier(Enums.AbilityName ability)
+    public void DetachModifier(AbilityModel ability)
     {
         if (_modifierToAbilityBindings.ContainsKey(ability))
             _modifierToAbilityBindings.Remove(ability);
     }
 
-    public Enums.ModifierName GetModifierForAbility(Enums.AbilityName ability)
+    public ModifierModel GetModifierForAbility(AbilityModel ability)
     {
-        return _modifierToAbilityBindings.TryGetValue(ability, out Enums.ModifierName modifire)
+        return _modifierToAbilityBindings.TryGetValue(ability, out ModifierModel modifire)
             ? modifire
-            : default;
+            : null;
     }
 }

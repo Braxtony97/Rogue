@@ -35,6 +35,7 @@ public class AbilityModel
 
         AttachedModifier = modifier;
         OnModifierAttached?.Invoke(modifier);
+        EventAggregator.Instance.Publish(new EventsProvider.ModifierAttachEvent(this, modifier));
     }
 
     public void DetachModifier()

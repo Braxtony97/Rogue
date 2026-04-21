@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,14 +23,16 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     private ModifierViewModel _viewModel;
     private RectMask2D _mask;
+    private bool _isBound;
     private Vector2 _offset;
 
     private Vector2 _originalAnchoredPosition;
 
-    public void Initialize(ModifierViewModel viewModel, RectMask2D mask)
+    public void Initialize(ModifierViewModel viewModel, RectMask2D mask, bool isBound) 
     {
         _viewModel = viewModel;
         _mask = mask;
+        _isBound = isBound;
 
         EventAggregator.Instance.Subscribe<AbilityHoverEvent>(OnAbilityHover);
         _viewModel.OnHighlihtChanged += ChangeHighlight;
@@ -38,10 +41,8 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         UpdateUI();
     }
 
-    private void AttachedChanged(bool isAttached)
-    {
+    private void AttachedChanged(bool isAttached) => 
         deactivatePanel.gameObject.SetActive(isAttached);
-    }
 
     private void ChangeHighlight(bool isHighlight) => 
         highlight.SetActive(isHighlight);
@@ -65,6 +66,8 @@ public class ModifierView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         typeText.text = _viewModel.ModifierType.ToString();
         iconLogo.sprite = _viewModel.IconLogo;
         iconBack.color = _viewModel.IconBackColor;
+
+        AttachedChanged(_isBound);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

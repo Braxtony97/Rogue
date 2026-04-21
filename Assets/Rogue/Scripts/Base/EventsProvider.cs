@@ -38,4 +38,16 @@ public static class EventsProvider
             IsDragging = isDragging;
         }
     }
+
+    public class ModifierAttachEvent
+    {
+        public AbilityModel AbilityModel;
+        public ModifierModel ModifierModel;
+
+        public ModifierAttachEvent(AbilityModel abilityModel, ModifierModel modifier)
+        {
+            AbilityModel = abilityModel;
+            ModifierModel = modifier;
+        }
+    }
 }

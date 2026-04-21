@@ -38,6 +38,8 @@ public class CharacterPanelView : PanelUI
             charactersView[i].Initialize(_characterViewModels[i]);
         }
 
+        _currentViewModel = _characterViewModels[0];
+
         UpdateUIData(_characterViewModels[0]);
 
         EventAggregator.Instance.Publish(new CharacterSelectedEvent(_characterViewModels[0].CharacterNameId));
@@ -63,6 +65,7 @@ public class CharacterPanelView : PanelUI
     {
         nameText.text = characterViewModel.Name;
         portraitImage.sprite = characterViewModel.FullPortrait;
+
         UpdateHealthDisplay(characterViewModel.CurrentHealthText, characterViewModel.MaxHealthText);
         UpdateArmorDisplay(characterViewModel.CurrentArmorText, characterViewModel.MaxArmorText);
 
@@ -80,7 +83,13 @@ public class CharacterPanelView : PanelUI
         foreach (AbilityViewModel ability in abilityViewModels)
         {
             AbilityView abilityView = Instantiate(abilityPrefab, abilitiesContainer);
-            abilityView.Initialize(ability);
+
+            ModifierModel modifierModel = _currentViewModel.ModifierToAbilityBindings
+            .TryGetValue(ability.GetModel(), out ModifierModel modifier)
+            ? modifier
+            : null;
+
+            abilityView.Initialize(ability, modifierModel);
             _currentAbilityViews.Add(abilityView);
         }
     }
@@ -95,9 +104,17 @@ public class CharacterPanelView : PanelUI
         foreach (ModifierViewModel modifier in modifierViewModels)
         {
             ModifierView modifierView = Instantiate(modifierPrefab, modifiersContainer);
-            modifierView.Initialize(modifier, mask); 
+
+            bool isBound = IsModifierBound(modifier.GetModel());
+
+            modifierView.Initialize(modifier, mask, isBound); 
             _currentModifierViews.Add(modifierView);
         }
+    }
+
+    private bool IsModifierBound(ModifierModel modifier)
+    {
+        return _currentViewModel.ModifierToAbilityBindings.ContainsValue(modifier);
     }
 
     private void ClearAbilities()

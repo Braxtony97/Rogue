@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AbilityViewModel
 {
-    public string Name => _model.Name;
+    public Enums.AbilityName Name => _model.AbilityName;
     public Sprite Icon => _model.Icon;
     public bool HasModifier => _model.AttachedModifier != null;
 

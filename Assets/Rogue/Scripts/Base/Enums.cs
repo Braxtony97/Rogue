@@ -23,6 +23,7 @@ public static class Enums
 
     public enum ModifierName
     {
+        None,
         Confuse,
         Destroy,
         Protect,
