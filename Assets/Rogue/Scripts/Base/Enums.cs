@@ -64,6 +64,7 @@ public static class Enums
     public enum PanelType
     {
         Inventory,
-        Character
+        Character,
+        Factions
     }
 }

@@ -166,6 +166,7 @@ MonoBehaviour:
   panels:
   - {fileID: 1679929100896933097, guid: 1b0f1700a98053a4487327cdf3a11011, type: 3}
   - {fileID: 5658058860523896647, guid: 6c3752d587baf73479e86d5f8eff97a7, type: 3}
+  - {fileID: 3676722823486804764, guid: 807f321778ab3bf418993d36ba98b0e4, type: 3}
 --- !u!1 &226061745
 GameObject:
   m_ObjectHideFlags: 0
