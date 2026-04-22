@@ -23,6 +23,7 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private AbilityViewModel _ability;
     private ModifierModel _modifierModel;
+    private bool _hoverDisabled = false;
 
     public void Initialize(AbilityViewModel ability, ModifierModel modifierModel)
     {
@@ -84,6 +85,9 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_hoverDisabled)
+            return;
+
         EventAggregator.Instance.Publish(new AbilityHoverEvent(_ability, true));
 
         selector.SetActive(true);
@@ -91,6 +95,8 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        _hoverDisabled = false;
+
         EventAggregator.Instance.Publish(new AbilityHoverEvent(_ability, false));
 
         selector.SetActive(false);
@@ -103,6 +109,10 @@ public class AbilityView : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (draggedModifier != null && _ability.CanAcceptModifier(draggedModifier.ModifierViewModel))
         {
             _ability.AttachModifier(draggedModifier.ModifierViewModel);
+
+            _hoverDisabled = true;
+            EventAggregator.Instance.Publish(new AbilityHoverEvent(_ability, false));
+            selector.SetActive(false);
         }
     }
 

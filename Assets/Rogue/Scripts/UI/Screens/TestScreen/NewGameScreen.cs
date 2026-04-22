@@ -7,24 +7,25 @@ public class NewGameScreen : ScreenUI
     [Header("Main Buttons")]
     [SerializeField] private Button _close;
     [SerializeField] private Button _inventoryButton;
-    [SerializeField] private Button _characterButton;
+    [SerializeField] private Button _characterButton; 
+    [SerializeField] private Button _factionsButton;
 
     [Header("Panels")]
     [SerializeField] private PanelUI _inventoryPanel;
     [SerializeField] private PanelUI _characterPanel;
+    [SerializeField] private PanelUI _factionPanel;
 
     [Header("Button Highlights")]
     [SerializeField] private GameObject _inventoryHighlight;
     [SerializeField] private GameObject _characterHighlight;
+    [SerializeField] private GameObject _factionsHighlight;
 
     [SerializeField] private Transform _canvas;
 
-    private List<CharacterViewModel> _characterViewModels;
     private UIPanelController _uiPanelController;
 
     public override void Initialize(List<CharacterViewModel> characterViewModels, UIPanelController uiPanelController)
     {
-        _characterViewModels = characterViewModels;
         _uiPanelController = uiPanelController;
 
         _close.onClick.AddListener(() 
@@ -34,10 +35,17 @@ public class NewGameScreen : ScreenUI
             _uiPanelController.ShowPanel(Enums.PanelType.Inventory, _canvas);
             SetActiveHighlight(_inventoryHighlight);
         });
+
         _characterButton.onClick.AddListener(() =>
         {
             _uiPanelController.ShowPanel(Enums.PanelType.Character, _canvas);
             SetActiveHighlight(_characterHighlight);
+        });
+
+        _factionsButton.onClick.AddListener(() =>
+        {
+            _uiPanelController.ShowPanel(Enums.PanelType.Factions, _canvas);
+            SetActiveHighlight(_factionsHighlight);
         });
 
         _uiPanelController.ShowPanel(Enums.PanelType.Character, _canvas);
@@ -48,6 +56,7 @@ public class NewGameScreen : ScreenUI
 
         _inventoryHighlight.SetActive(false);
         _characterHighlight.SetActive(false);
+        _factionsHighlight.SetActive(false);
 
         highlight.SetActive(true);
     }
@@ -57,5 +66,6 @@ public class NewGameScreen : ScreenUI
         _close.onClick.RemoveAllListeners();
         _inventoryButton.onClick.RemoveAllListeners();
         _characterButton.onClick.RemoveAllListeners();
+        _factionsButton?.onClick.RemoveAllListeners();
     }
 }

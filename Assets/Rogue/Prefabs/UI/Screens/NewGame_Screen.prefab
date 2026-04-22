@@ -335,10 +335,13 @@ MonoBehaviour:
   _close: {fileID: 3834763783586586588}
   _inventoryButton: {fileID: 6166137961260844984}
   _characterButton: {fileID: 4094677019507239659}
+  _factionsButton: {fileID: 7691634279815867398}
   _inventoryPanel: {fileID: 5658058860523896647, guid: 6c3752d587baf73479e86d5f8eff97a7, type: 3}
   _characterPanel: {fileID: 1679929100896933097, guid: 1b0f1700a98053a4487327cdf3a11011, type: 3}
+  _factionPanel: {fileID: 3676722823486804764, guid: 807f321778ab3bf418993d36ba98b0e4, type: 3}
   _inventoryHighlight: {fileID: 760690990050050860}
   _characterHighlight: {fileID: 7480257621491461759}
+  _factionsHighlight: {fileID: 3864700919709132946}
   _canvas: {fileID: 939501803797593045}
 --- !u!1 &8161608172860198541
 GameObject:
@@ -732,19 +735,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3131799429844569878, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.49411765
+      value: 0.42352942
       objectReference: {fileID: 0}
     - target: {fileID: 3131799429844569878, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.7921569
+      value: 0.54901963
       objectReference: {fileID: 0}
     - target: {fileID: 3131799429844569878, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.8745098
+      value: 0.7254902
       objectReference: {fileID: 0}
     - target: {fileID: 3131799429844569878, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4286499551
+      value: 4285303993
       objectReference: {fileID: 0}
     - target: {fileID: 5121653833038496658, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_IsActive
@@ -1100,6 +1103,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5313578579101580010}
     m_Modifications:
+    - target: {fileID: 329569415917154066, guid: 37677125004413d46a2949779192c752, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 329569415917154066, guid: 37677125004413d46a2949779192c752, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 329569415917154066, guid: 37677125004413d46a2949779192c752, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.8745098
+      objectReference: {fileID: 0}
     - target: {fileID: 1420432332831543150, guid: 37677125004413d46a2949779192c752, type: 3}
       propertyPath: m_Name
       value: Inventory_Button
@@ -1328,3 +1343,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8038030463992719826, guid: 37677125004413d46a2949779192c752, type: 3}
   m_PrefabInstance: {fileID: 7938985238908584724}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3864700919709132946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6597452403284650886, guid: 37677125004413d46a2949779192c752, type: 3}
+  m_PrefabInstance: {fileID: 7938985238908584724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7691634279815867398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 329569415917154066, guid: 37677125004413d46a2949779192c752, type: 3}
+  m_PrefabInstance: {fileID: 7938985238908584724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
